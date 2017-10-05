@@ -20,13 +20,30 @@ bmp = image.toPixelMatrix();
 
 
 
+int gray;
+
 if( bmp[0].size() > 0 && bmp.size() > 0 )
 {
         cout<< "It is "<< bmp[0].size() << " pixels wide and " << bmp.size() << " pixels high."<<endl;
+        for(int row = 0; row < bmp.size(); row++)
+        {
+            for(int col = 0; col < bmp[0].size(); col++)
+            {
+                rgb = bmp[row][col];
+                gray = (rgb.red + rgb.green + rgb.blue)/3;
+                rgb.red = gray;
+                rgb.green = gray;
+                rgb.blue = gray;
+                bmp[row][col] = rgb;
+            }
+        }
+    image.fromPixelMatrix(bmp);
+    image.save("oldtimey.bmp");
 }
 else
 {
     cout<< "It would appear this has either no height or no width. Please try again." << endl;
+ 
 }
 
 
