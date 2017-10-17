@@ -5,18 +5,14 @@
 #include "bitmap.h"
 #include <fstream>
 #include <vector>
- using namespace std;
+
+using namespace std;
 
 int main()
 {
-// So far this is an empty file im going to use for the project. 
-// I will create a great program that does exactly what it is supposed to
 Bitmap image;
 vector <vector <Pixel> > bmp;
 Pixel rgb;
-
-
-
 
 int gray;
 string inPic;
@@ -25,9 +21,8 @@ cout<<"Please provide the file to be modified."<<endl;
 cin>>inPic;
 
 image.open(inPic);
-
 bool validBmp = image.isImage();
-
+ 
 while(validBmp == false)
 {
     cout<<"The file must be a 24 bit depth Windows BMP file. Please try again."<<endl;
@@ -36,24 +31,20 @@ while(validBmp == false)
     validBmp = image.isImage();
 }
 
-
 bmp = image.toPixelMatrix();
-
 char choice;
+ 
 do
 {
-    
     cout<<"Please select an option."<<endl;
     cout<<"Pixel Count(P)"<<endl<<"Change color to black and white(C)"<<endl<<"Exit(E)"<<endl;
     cin>> choice;
 
-
-    
     if( bmp[0].size() > 0 && bmp.size() > 0 )
     {
         if(choice == 'p' || choice == 'P')
         {
-        cout<< "It is "<< bmp[0].size() << " pixels wide and " << bmp.size() << " pixels high."<<endl;
+            cout<< "It is "<< bmp[0].size() << " pixels wide and " << bmp.size() << " pixels high."<<endl;
         }
         else if(choice == 'c' || choice == 'C')
         {
@@ -79,15 +70,9 @@ do
     else
     {
         cout<< "It would appear this has either no height or no width. Please try again." << endl;
- 
     }
 
 }while(choice != 'E' && choice != 'e' );
 
-
-
-
-
- return 0;
-
- }
+return 0;
+}
